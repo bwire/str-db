@@ -9,11 +9,34 @@ class SwapiService {
         return await response.json();
     }
 
-    getAllPeople() {
-      return this.getResource(`${this._apiBase}people/`);
+    async getAllPeople() {
+      const people = await this.getResource(`${this._apiBase}people/`);
+      return people.results;
     }
 
-    getAllPerson(id) {
+    getPerson(id) {
       return this.getResource(`${this._apiBase}people/:${id}`);
     }
+
+    async getAllPlanets() {
+      const planets = await this.getResource(`${this._apiBase}planets/`);
+      return planets.results;
+    }
+
+    getPlanet(id) {
+      return this.getResource(`${this._apiBase}planets/:${id}`);
+    }
+
+    async getAllStarships() {
+      const starships = await this.getResource(`${this._apiBase}starships/`);
+      return starships.results;
+    }
+
+    getStarship(id) {
+      return this.getResource(`${this._apiBase}starships/:${id}`);
+    }
 }
+
+new SwapiService().getAllPeople().then(elements => elements.forEach(element => {
+  console.log(element);
+}));
