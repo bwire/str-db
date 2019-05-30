@@ -20,20 +20,51 @@ export default class SwapiService {
 
   async getAllPlanets() {
     const planets = await this.getResource(`${this._apiBase}planets/`);
-    return planets.results;
+    return planets.results.map(planet => this._transformPlanet(planet));
   }
 
-  getPlanet(id) {
-    return this.getResource(`${this._apiBase}planets/:${id}`);
+  async getPlanet(id) {
+    const planet =  await this.getResource(`${this._apiBase}planets/${id}/`);
+    return this._transformPlanet(planet);
   }
 
   async getAllStarships() {
     const starships = await this.getResource(`${this._apiBase}starships/`);
-    return starships.results;
+    return starships.results.map(starship => this._transformStarship(starship));;
   }
 
-  getStarship(id) {
-    return this.getResource(`${this._apiBase}starships/:${id}`);
+  async getStarship(id) {
+    const starship = await this.getResource(`${this._apiBase}starships/${id}`);
+    return this._transformStarship(starship);
+  }
+
+  _extractId(item) {
+    const rgx = /\/([0-9]*)\/$/;
+    return item.url.match(rgx)[1];
+  }
+
+  _transformPlanet(planet) {  
+    return {
+      pictureId: this._extractId(planet),
+      name: planet.name,
+      population: planet.population,
+      rotationPeriod: planet.rotation_Period,
+      diameter: planet.diameter
+    }
+  }
+
+  _transformStarship(starship) {
+    return {
+      pictureId: this._extractId(starship),
+      name: starship.name,
+      model: starship.model,
+      manufacturer: starship.manufacturer,
+      costInCredits: starship.costInCredits,
+      length: starship.length,
+      crew: starship.crew,
+      passengers: starship.passengers,
+      cargoCapacity: starship.cargoCapacity
+    }
   }
 }
 
