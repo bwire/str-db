@@ -11,7 +11,7 @@ export default class SwapiService {
 
   async getAllPeople() {
     const people = await this.getResource(`${this._apiBase}people/`);
-    return people.results;
+    return people.results.map(person => this._transformPerson(person));
   }
 
   getPerson(id) {
@@ -66,8 +66,14 @@ export default class SwapiService {
       cargoCapacity: starship.cargoCapacity
     }
   }
-}
 
-new SwapiService().getAllPeople().then(elements => elements.forEach(element => {
-console.log(element);
-}));
+  _transformPerson(person) {
+    return {
+      id: this._extractId(person),
+      name: person.name,
+      gender: person.gender,
+      birthYear: person.birthYear,
+      eyeColor: person.eyeColor
+    }
+  }
+}
