@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 
-import Header from '../header'
-import ItemList from '../item-list'
-import PersonDetails from '../person-details'
-import RandomPlanet from '../random-planet'
+import Header from '../header';
+import PeoplePage from '../people-page';
+import RandomPlanet from '../random-planet';
 
 import './app.css'
 
 export default class App extends Component {
   state = {
-    showRandomPlanet: false,
-    selectedPerson: 1
+    showRandomPlanet: false
   };
 
   toggleRandomPlanet = () => {
@@ -20,12 +18,6 @@ export default class App extends Component {
       }
     });
   };
-
-  onItemSelected = (id) => {
-    this.setState({
-      selectedPerson: id
-    });
-  }
 
   render() {
     const planet = this.state.showRandomPlanet ? <RandomPlanet/> : null;
@@ -37,14 +29,7 @@ export default class App extends Component {
         <button className="toggle-planet btn btn-warning btn-lg" onClick={ this.toggleRandomPlanet }>
           Toggle Random Planet
         </button>
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList onItemSelected={ this.onItemSelected }/> 
-          </div>
-          <div className="col-md-6">
-            <PersonDetails personId={ this.state.selectedPerson }/>
-          </div>
-        </div>
+        <PeoplePage />
       </div>
     );
   }
