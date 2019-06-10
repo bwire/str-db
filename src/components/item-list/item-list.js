@@ -6,15 +6,15 @@ import './item-list.css'
 
 export default class ItemList extends Component {
   state = {
-    peopleList: []
+    itemList: []
   };
-  swapiService = new SwapiService();
-
+  
   componentDidMount = () => {
-    this.swapiService.getAllPeople()
-      .then(peopleList => {
+    const { getData } = this.props;
+    getData()
+      .then(itemList => {
         this.setState({
-          peopleList  
+          itemList  
         })
       });  
   }
@@ -34,13 +34,13 @@ export default class ItemList extends Component {
   }
 
   render() {
-    const { peopleList } = this.state;
-    if (!peopleList) {
+    const { itemList } = this.state;
+    if (!itemList) {
       return <Spinner />
     } else {
       return(
         <ul className="item-list list-group">
-          { this.renderItems(peopleList) }  
+          { this.renderItems(itemList) }  
         </ul>
       )
     }

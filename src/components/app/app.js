@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 import Header from '../header';
 import PeoplePage from '../people-page';
 import RandomPlanet from '../random-planet';
+import ItemList from '../item-list';
+import PersonDetails from '../person-details'
+import SwapiService from '../../services/swapi-service'
 
 import './app.css'
 
@@ -10,6 +13,8 @@ export default class App extends Component {
   state = {
     showRandomPlanet: false
   };
+
+  swapiService = new SwapiService;
 
   toggleRandomPlanet = () => {
     this.setState((state) => {
@@ -30,6 +35,15 @@ export default class App extends Component {
           Toggle Random Planet
         </button>
         <PeoplePage />
+
+        <div className="row mb2">
+          <div className="col-md-6">
+            <ItemList onItemSelected={ this.onPersonSelected } getData = { this.swapiService.getAllPlanets } /> 
+          </div>
+          <div className="col-md-6">
+            <PersonDetails personId={ this.state.selectedPerson }/>
+          </div>
+        </div>
       </div>
     );
   }
