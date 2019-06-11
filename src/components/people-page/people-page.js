@@ -15,15 +15,19 @@ export default class PeoplePage extends Component {
   
   swapiService = new SwapiService;
 
-  onPersonSelected = (selectedPerson) => {
-    this.setState({
-      selectedPerson
-    });
-  }
-
   componentDidCatch() {
     this.setState({
       hasError: true
+    });
+  }
+
+  renderItem = ({ name, gender, birthYear }) => {
+    return `${name} (${gender}, ${birthYear})`;
+  }
+
+  onPersonSelected = (selectedPerson) => {
+    this.setState({
+      selectedPerson
     });
   }
 
@@ -35,7 +39,11 @@ export default class PeoplePage extends Component {
     return (
       <div className="row mb2">
         <div className="col-md-6">
-          <ItemList onItemSelected={ this.onPersonSelected } getData ={ this.swapiService.getAllPeople } /> 
+          <ItemList 
+            onItemSelected={ this.onPersonSelected } 
+            getData ={ this.swapiService.getAllPeople } 
+            renderItem = { this.renderItem }
+          /> 
         </div>
         <div className="col-md-6">
           <PersonDetails personId={ this.state.selectedPerson }/>
