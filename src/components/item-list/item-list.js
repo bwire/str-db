@@ -27,7 +27,7 @@ export default class ItemList extends Component {
     return items.map((item) => {
       return(
         <li className="list-group-item" key={ item.id } onClick={ () => this.propOnSelected(item.id) }>
-          { this.props.renderItem(item) }
+          { this.props.children(item) }
         </li>
       );
     });   

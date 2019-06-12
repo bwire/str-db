@@ -6,22 +6,20 @@ import SwapiService from '../../services/swapi-service'
 
 import './people-page.css'
 import Row from '../row/row';
+import ErrorBoundary from '../error-boundary/error-boundary';
 
 export default class PeoplePage extends Component {
   state = {
-    selectedPerson: 1,
-    hasError: false
+    selectedPerson: 1
   };
   
   swapiService = new SwapiService;
 
   leftBlock = (
     <div className="col-md-6">
-      <ItemList 
-        onItemSelected={ this.onPersonSelected } 
-        getData ={ this.swapiService.getAllPeople } 
-        renderItem = { this.renderItem }
-      /> 
+      <ItemList onItemSelected={ this.onPersonSelected } getData ={ this.swapiService.getAllPeople } >
+        { ({ name, gender, birthYear }) => `${name} (${gender}, ${birthYear})` }
+      </ItemList> 
     </div>
   );
 
@@ -31,28 +29,17 @@ export default class PeoplePage extends Component {
     </div>
   );
 
-  componentDidCatch() {
-    this.setState({
-      hasError: true
-    });
-  }
-
   onPersonSelected = (selectedPerson) => {
     this.setState({
       selectedPerson
     });
   }
 
-  renderItem = ({ name, gender, birthYear }) => {
-    return `${name} (${gender}, ${birthYear})`;
-  }
-
-  render() {
-    const { hasError } = this.state;
-    if (hasError) {
-      return <ErrorIndicator />
-    };
-    
-    return <Row left = { this.leftBlock } right = { this.rightBlock } />
+  render() { 
+    return (
+      <ErrorBoundary>
+        <Row left = { this.leftBlock } right = { this.rightBlock } />
+      </ErrorBoundary>
+    )
   };
 }
