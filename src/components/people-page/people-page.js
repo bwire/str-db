@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
-import ErrorIndicator from '../error-indicator';
+import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi-service'
 
 import './people-page.css'
@@ -13,7 +12,7 @@ export default class PeoplePage extends Component {
     selectedPerson: 1
   };
   
-  swapiService = new SwapiService;
+  swapiService = new SwapiService();
 
   leftBlock = (
     <div className="col-md-6">
@@ -25,7 +24,7 @@ export default class PeoplePage extends Component {
 
   rightBlock = (
     <div className="col-md-6">
-      <PersonDetails personId={ this.state.selectedPerson }/>
+      <ItemDetails personId={ this.state.selectedPerson }/>
     </div>
   );
 
