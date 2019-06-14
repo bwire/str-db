@@ -34,6 +34,7 @@ export default class App extends Component {
           itemId = { 3 } 
           getData = { getPerson } 
           getImageUrl = { getPersonImage }
+          detailsString = 'gender,birthYear,eyeColor'
         />
       </div>
     );
@@ -44,6 +45,7 @@ export default class App extends Component {
           itemId = { 5 } 
           getData = { getStarship } 
           getImageUrl = { getStarshipImage }
+          detailsString = 'model,manufacturer,cargoCapacity'
         />
       </div>
     );
