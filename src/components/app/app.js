@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 
 import Header from '../header';
-//import PeoplePage from '../people-page';
 import RandomPlanet from '../random-planet';
-//import ItemList from '../item-list';
-import ItemDetails from '../item-details'
+import ItemDetails, { Record } from '../item-details/item-details'
 import SwapiService from '../../services/swapi-service'
+
 
 import './app.css'
 import Row from '../row/row';
@@ -34,8 +33,11 @@ export default class App extends Component {
           itemId = { 3 } 
           getData = { getPerson } 
           getImageUrl = { getPersonImage }
-          detailsString = 'gender,birthYear,eyeColor'
-        />
+        >
+          <Record name = 'gender' label = 'Gender' />
+          <Record name = 'birthYear' label = 'Year' />
+          <Record name = 'eyeColor' label = 'Eyes' />
+        </ItemDetails>
       </div>
     );
 
@@ -45,8 +47,11 @@ export default class App extends Component {
           itemId = { 5 } 
           getData = { getStarship } 
           getImageUrl = { getStarshipImage }
-          detailsString = 'model,manufacturer,cargoCapacity'
-        />
+        >
+          <Record name = 'model' label = 'Model' />
+          <Record name = 'manufacturer' label = 'Manufacturer' />
+          <Record name = 'cargoCapacity' label = 'Cargo' />
+        </ItemDetails>
       </div>
     );
 

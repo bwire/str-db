@@ -69,7 +69,7 @@ export default class SwapiService {
       length: starship.length,
       crew: starship.crew,
       passengers: starship.passengers,
-      cargoCapacity: starship.cargoCapacity
+      cargoCapacity: starship.cargo_capacity
     }
   }
 

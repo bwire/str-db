@@ -3,6 +3,17 @@ import Spinner from '../spinner'
 
 import './item-details.css'
 
+const Record = ({ item, name, label}) => {
+  return (
+    <li className="list-group-item">
+      <span className="term">{ `${label}: ` }</span>
+      <span>{ item[name] }</span>
+    </li>
+  );  
+};
+
+export { Record };
+
 export default class ItemDetails extends Component {
   
   state = {
@@ -38,45 +49,41 @@ export default class ItemDetails extends Component {
 
   render() {
     const {item, loading, image } = this.state;
-    const viewAttributes = this.props.detailsString.split(',');
+    const { children } = this.props;
 
     if (!item) {
       return <span>Select item from the list</span>;
     };
   
     const spinner = loading ? <Spinner /> : null;
-    const personView = !loading ? 
-      <PersonView person={ item } image = { image }>
-        { viewAttributes }
-      </PersonView> : null;
+    const itemView = !loading ? 
+      <ItemView item={ item } image = { image }>
+        { children }
+      </ItemView> : null;
 
     return (
       <div className="person-details card">
         { spinner }
-        { personView }
+        { itemView }
       </div>
     );
   }
 }
 
-const PersonView = ({ person, image, children }) => {
+const ItemView = ({ item, image, children }) => {
   const viewAttributes = React.Children.map(children, (child) => {
     return (
-      <li className="list-group-item">
-        <span className="term">{ `${child}: ` }</span>
-        <span>{ person[child] }</span>
-      </li>
+      React.cloneElement(child, { item })
     );
   });
 
-  const { name, gender, birthYear, eyeColor } = person;
   return (
     <React.Fragment>
       <img className="person-image" 
         src={ image } 
         alt="character"/>
       <div className="card-body">
-        <h4>{ name }</h4>
+        <h4>{ item.name }</h4>
         <ul className="list-group list-group-flush">
           { viewAttributes }
         </ul>
