@@ -4,10 +4,9 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ItemDetails, { Record } from '../item-details/item-details'
 import SwapiService from '../../services/swapi-service'
-
+import PeoplePage from '../people-page/people-page';
 
 import './app.css'
-import Row from '../row/row';
 
 export default class App extends Component {
   state = {
@@ -62,10 +61,7 @@ export default class App extends Component {
         <button className="toggle-planet btn btn-warning btn-lg" onClick={ this.toggleRandomPlanet }>
           Toggle Random Planet
         </button>
-        <Row
-          left = { personDetails}
-          right = { starshipDetails }
-        />
+        <PeoplePage />
       </div>
     );
   }

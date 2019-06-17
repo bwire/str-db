@@ -14,8 +14,7 @@ const Record = ({ item, name, label}) => {
 
 export { Record };
 
-export default class ItemDetails extends Component {
-  
+export default class ItemDetails extends Component { 
   state = {
     item: null,
     image: null,
