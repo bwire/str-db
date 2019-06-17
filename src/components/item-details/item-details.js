@@ -12,8 +12,6 @@ const Record = ({ item, name, label}) => {
   );  
 };
 
-export { Record };
-
 export default class ItemDetails extends Component { 
   state = {
     item: null,
@@ -90,3 +88,5 @@ const ItemView = ({ item, image, children }) => {
      </React.Fragment>
   );
 }
+
+export { Record };
