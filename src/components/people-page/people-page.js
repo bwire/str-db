@@ -15,9 +15,7 @@ export default class PeoplePage extends Component {
 
   leftBlock = (
     <div className="col-md-6">
-      <PersonList onItemSelected={ (person) => this.onPersonSelected(person) }>
-        { ({ name, gender, birthYear }) => `${name} (${gender}, ${birthYear})` }
-      </PersonList>
+      <PersonList onItemSelected={ (person) => this.onPersonSelected(person) } />
     </div>
   );
 
