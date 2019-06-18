@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { PersonList } from '../sw-components/item-lists';
 import { PersonDetails } from '../sw-components/details';
-import SwapiService from '../../services/swapi-service'
 import Row from '../row/row';
 import ErrorBoundary from '../error-boundary/error-boundary';
 
@@ -11,8 +10,6 @@ export default class PeoplePage extends Component {
     selectedPerson: "1"
   };
   
-  swapiService = new SwapiService();
-
   leftBlock = (
     <div className="col-md-6">
       <PersonList onItemSelected={ (person) => this.onPersonSelected(person) } />
