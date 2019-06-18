@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PersonList } from '../sw-components/item-lists';
-import { PersonDetails } from '../sw-components/details';
+import PersonDetails from '../sw-components/person-details';
 import Row from '../row/row';
 import ErrorBoundary from '../error-boundary/error-boundary';
 
@@ -32,7 +32,6 @@ export default class PeoplePage extends Component {
   }
 
   render() {
-    console.log('Rendering...');
     return (
       <ErrorBoundary>
         <Row left = { this.leftBlock } right = { this.rightBlock() } />
