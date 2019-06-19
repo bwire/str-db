@@ -51,7 +51,7 @@ export default class SwapiService {
 
   _transformPlanet = (planet) => {  
     return {
-      pictureId: this._extractId(planet),
+      id: this._extractId(planet),
       name: planet.name,
       population: planet.population,
       rotationPeriod: planet.rotation_Period,
