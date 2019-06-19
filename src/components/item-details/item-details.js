@@ -50,7 +50,7 @@ export default class ItemDetails extends Component {
 
     if (!item) {
       return <span>Select item from the list</span>;
-    };
+    }
   
     const spinner = loading ? <Spinner /> : null;
     const itemView = !loading ? 
@@ -85,7 +85,7 @@ const ItemView = ({ item, image, children }) => {
           { viewAttributes }
         </ul>
       </div>
-     </React.Fragment>
+    </React.Fragment>
   );
 }
 

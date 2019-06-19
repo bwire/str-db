@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
-import { PersonList } from '../sw-components/item-lists';
-import PersonDetails from '../sw-components/person-details';
+import { PlanetList } from '../sw-components/item-lists';
+import PlanetDetails from '../sw-components/planet-details';
 import Row from '../row/row';
 import ErrorBoundary from '../error-boundary/error-boundary';
 
-import './people-page.css'
-export default class PeoplePage extends Component {
+import './planet-page.css'
+export default class PlanetPage extends Component {
   state = {
-    selectedPerson: "1"
+    selectedPlanet: "1"
   };
   
   leftBlock = (
     <div className="col-md-6">
-      <PersonList onItemSelected={ (person) => this.onPersonSelected(person) } />
+      <PlanetList onItemSelected={ (planet) => this.onPlanetSelected(planet) } />
     </div>
   );
 
   rightBlock = () => {
     return (
       <div className="col-md-6">
-        <PersonDetails itemId = { this.state.selectedPerson } />
+        <PlanetDetails itemId = { this.state.selectedPlanet } />;
       </div>
     );
   };
 
-  onPersonSelected = (selectedPerson) => {
+  onPlanetSelected = (selectedPlanet) => {
     this.setState({
-      selectedPerson
+      selectedPlanet
     });
   }
 
