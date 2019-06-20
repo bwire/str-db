@@ -5,8 +5,8 @@ export default class DummySwapiService {
       id: 1,
       name: 'Bilbo Baggins [TEST DATA]',
       gender: 'male',
-      birthYear: 'long ago',
-      eyeColor: 'dark brown'
+      birthYear: 'not so long ago',
+      eyeColor: 'black'
     },
 
     {
@@ -53,8 +53,8 @@ export default class DummySwapiService {
     return this._people;
   };
 
-  getPerson = async () => {
-    return this._people[0];
+  getPerson = async (id) => {
+    return this._people[id - 1];
   };
 
   getAllPlanets = async () => {

@@ -21,9 +21,9 @@ const Header = ({ onServiceChange }) => {
           <a href="#">Starships</a>
         </li>
       </ul>
-      <btn className="btn btn-primary btn-sm" onClick = { onServiceChange }>
+      <button className="btn btn-primary btn-sm" onClick = { onServiceChange }>
         Change service
-      </btn>
+      </button>
     </div>
   );
 }
