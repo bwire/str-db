@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { PersonList } from '../sw-components/item-lists';
-import PersonDetails from '../sw-components/person-details';
+import { StarshipList } from '../sw-components/item-lists';
+import StarshipDetails from '../sw-components/starship-details';
 import Row from '../row';
 import ErrorBoundary from '../error-boundary/error-boundary';
 
-export default class PeoplePage extends Component {
+export default class StarshipPage extends Component {
   state = {
     selectedItem: null
   };
@@ -19,8 +19,8 @@ export default class PeoplePage extends Component {
     return (
       <ErrorBoundary>
         <Row 
-          left = { <PersonList onItemSelected={ (item) => this.onItemSelected(item) } /> }
-          right = { <PersonDetails itemId = { this.state.selectedItem } /> }
+          left = { <StarshipList onItemSelected={ (item) => this.onItemSelected(item) } /> }
+          right = { <StarshipDetails itemId = { this.state.selectedItem } /> }
         />
       </ErrorBoundary>
     )
