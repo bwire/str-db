@@ -13,9 +13,10 @@ export default class RandomPlanet extends Component {
   };
   swapiService = new SwapiService();
 
-  componentDidMount = () => {  
+  componentDidMount = () => { 
+    const { interval } = this.props;  
     this.updatePlanet();  
-    this.interval = setInterval(this.updatePlanet, 1500);
+    this.interval = setInterval(this.updatePlanet, interval);
   }
   
   componentWillUnmount = () => {
@@ -57,6 +58,10 @@ export default class RandomPlanet extends Component {
     );   
   }
 }
+
+RandomPlanet.defaultProps = {
+  interval: 10000
+};
 
 const PlanetView = ({ planet }) => {
   const { id, name, population, rotationPeriod, diameter } = planet;
