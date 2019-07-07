@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import SwapiService from '../../services/swapi-service'
-import Spinner from '../../components/spinner'
-import ErrorIndicator from '../../components/error-indicator'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import SwapiService from '../../services/swapi-service';
+import Spinner from '../../components/spinner';
+import ErrorIndicator from '../../components/error-indicator';
 
 import './random-planet.css'
 
@@ -62,6 +63,10 @@ export default class RandomPlanet extends Component {
 RandomPlanet.defaultProps = {
   interval: 10000
 };
+
+RandomPlanet.propTypes = {
+  interval: PropTypes.number
+}
 
 const PlanetView = ({ planet }) => {
   const { id, name, population, rotationPeriod, diameter } = planet;
