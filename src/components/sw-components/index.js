@@ -14,5 +14,5 @@ export {
   StarshipList, 
   PersonDetails,
   PlanetDetails,
-  StarshipDetails
+  StarshipDetails,
 }
